@@ -1,0 +1,37 @@
+.main {
+  display: table;  
+  width: 100%;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.left, .right {  
+  display: table-cell;
+  width: 30%;  
+}
+
+.center {
+  display: table-cell;
+  width: 35%;  
+}
+
+.selectBtn.btn-group-vertical .btn.startBtn{
+  background-color: dodgerblue !important;
+  border-color: dodgerblue !important;
+}
+
+.selectBtn.btn-group-vertical .btn.stopBtn{
+  background-color: brown !important;
+  border-color: brown !important;
+}
+
+.btn-group-vertical .btn {
+  background-color: lightslategray !important;
+  border-color: lightslategray !important;
+}
+
+.btn-group-vertical .btn.active {
+  background-color: dodgerblue !important;
+  border-color: dodgerblue !important;
+}

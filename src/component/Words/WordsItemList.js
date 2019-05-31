@@ -3,7 +3,7 @@ import WordsItem from './WordsItem';
 
 class WordsItemList extends React.Component {
     render() {             
-        const { imgs, desc, showDesc } = this.props;    
+        const { imgs, desc, showDesc, rate } = this.props;    
         const imgList = imgs.map((img) =>            
             <WordsItem   
                 key = {img.id}                 
@@ -15,7 +15,7 @@ class WordsItemList extends React.Component {
         return (
             <div className="desc">
                 <div>
-                    {showDesc && <label>{desc}</label>}
+                    {showDesc && <label>{desc + ' ' + rate}</label>}
                 </div>
                 <div>   
                     {imgList}

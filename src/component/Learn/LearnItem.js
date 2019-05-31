@@ -6,7 +6,7 @@ class LearnItem extends React.Component {
         return (
             <div className="desc">
                 <div>
-                    {this.props.showDesc && <label>{this.props.desc}</label>}
+                    {this.props.showDesc && <label>{this.props.desc + ' ' + this.props.rate}</label>}
                 </div>
                 <div>   
                     {this.props.showDesc && <img src={this.props.img} alt=""></img>}                    

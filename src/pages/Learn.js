@@ -114,10 +114,17 @@ class Learn extends React.Component {
     }
 
     render() {
+        let {question, learning, showDesc} = this.state;
+        let rate = (question.correct/(question.correct + question.wrong)) * 100;
+        if(isNaN(rate)) rate = 0.0;
+        rate = '[' + rate.toFixed(0) + '%]';
         return (
-            <LearnTemplate select={<LearnSelect learning={this.state.learning} onStart={this.handleStart} onStop={this.handleStop}/>} 
-                            form={<LearnForm question={this.state.question.shape} onCheckAnswer={this.checkAnswer}/>}>
-                <LearnItem showDesc={this.state.showDesc} img={this.state.question.img} desc={this.state.question.mean + ' ' + this.state.question.sound}/>
+            <LearnTemplate select={<LearnSelect learning={learning} onStart={this.handleStart} onStop={this.handleStop}/>} 
+                            form={<LearnForm question={question.shape} onCheckAnswer={this.checkAnswer}/>}>
+                <LearnItem showDesc={showDesc} 
+                            img={question.img} 
+                            desc={question.mean + ' ' + question.sound}
+                            rate={rate}/>
             </LearnTemplate>
         );
     }

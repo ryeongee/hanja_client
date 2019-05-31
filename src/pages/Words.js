@@ -125,10 +125,14 @@ class Words extends React.Component {
     }
 
     render() {
+        let {question, showDesc, imgs, learning} = this.state;
+        let rate = (question.correct/(question.correct + question.wrong)) * 100;
+        if(isNaN(rate)) rate = 0.0;
+        rate = '[' + rate.toFixed(0) + '%]';
         return (
-            <WordsTemplate select={<WordsSelect learning={this.state.learning} onStart={this.handleStart} onStop={this.handleStop}/>} 
-                            form={<WordsForm question={this.state.question.shapes} onCheckAnswer={this.checkAnswer}/>}>
-                <WordsItemList showDesc={this.state.showDesc} imgs={this.state.imgs} desc={this.state.question.sounds}/>
+            <WordsTemplate select={<WordsSelect learning={learning} onStart={this.handleStart} onStop={this.handleStop}/>} 
+                            form={<WordsForm question={question.shapes} onCheckAnswer={this.checkAnswer}/>}>
+                <WordsItemList showDesc={showDesc} imgs={imgs} desc={question.sounds} rate={rate}/>
             </WordsTemplate>
         );
     }

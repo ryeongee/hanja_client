@@ -54,7 +54,7 @@ class Learn extends React.Component {
         await this.getQuestion();        
     }
     
-    handleStop = () => {        
+    handleStop = async() => {        
         this.setState({
             level: '',    
             question: {},
@@ -65,7 +65,7 @@ class Learn extends React.Component {
             
         });        
         let data = JSON.stringify(this.state.result);        
-        axios.get(`http://${info.ip()}:${info.port()}/set?result=${data}`);
+        await axios.get(`http://${info.ip()}:${info.port()}/set?result=${data}`);
         let retry = window.confirm("다시 하시겠습니까?");
         if(retry) {
             this.handleStart(this.state.type);

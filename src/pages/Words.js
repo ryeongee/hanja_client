@@ -53,7 +53,7 @@ class Words extends React.Component {
         await this.getQuestion();        
     }
     
-    handleStop = () => {        
+    handleStop = async() => {        
         this.setState({            
             question: {},
             index: 0,           
@@ -63,7 +63,7 @@ class Words extends React.Component {
             
         });             
         let data = JSON.stringify(this.state.result);        
-        axios.get(`http://${info.ip()}:${info.port()}/wset?result=${data}`);
+        await axios.get(`http://${info.ip()}:${info.port()}/wset?result=${data}`);
         let retry = window.confirm("다시 하시겠습니까?");
         if(retry) {
             this.handleStart(this.state.type);

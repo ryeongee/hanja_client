@@ -4,6 +4,7 @@ import LearnTemplate from '../component/Learn/LearnTemplate';
 import LearnSelect from '../component/Learn/LearnSelect';
 import LearnForm from '../component/Learn/LearnForm';
 import LearnItem from '../component/Learn/LearnItem';
+import info from '../info';
 
 class Learn extends React.Component {
     state = {
@@ -35,7 +36,8 @@ class Learn extends React.Component {
             default:
                 break;
         }        
-        const get = await axios.get(`http://localhost:3333/get?level=${data.level}&order=${order}&limit=${this.state.limit}`);
+        console.log(info.ip(), info.port());
+        const get = await axios.get(`http://${info.ip()}:${info.port()}/get?level=${data.level}&order=${order}&limit=${this.state.limit}`);
         this.setState({
             index: 0,
             level: data.level,            
@@ -64,7 +66,7 @@ class Learn extends React.Component {
         });        
         alert("학습 종료.");
         let data = JSON.stringify(this.state.result);        
-        axios.get(`http://localhost:3333/set?result=${data}`);
+        axios.get(`http://${info.ip()}:${info.port()}/set?result=${data}`);
         // axios post로 학습 성적 전송
     }
 

@@ -35,8 +35,7 @@ class Learn extends React.Component {
                 break;
             default:
                 break;
-        }        
-        console.log(info.ip(), info.port());
+        }                
         const get = await axios.get(`http://${info.ip()}:${info.port()}/get?level=${data.level}&order=${order}&limit=${this.state.limit}`);
         this.setState({
             index: 0,
@@ -45,7 +44,8 @@ class Learn extends React.Component {
             learning: true,
             showDesc: false,
             result: [],
-            firstTry: true
+            firstTry: true,
+            type: data
         });        
     }
 
@@ -64,10 +64,12 @@ class Learn extends React.Component {
             showDesc: false,
             
         });        
-        alert("학습 종료.");
         let data = JSON.stringify(this.state.result);        
         axios.get(`http://${info.ip()}:${info.port()}/set?result=${data}`);
-        // axios post로 학습 성적 전송
+        let retry = window.confirm("다시 하시겠습니까?");
+        if(retry) {
+            this.handleStart(this.state.type);
+        }   
     }
 
     getQuestion = () => {             

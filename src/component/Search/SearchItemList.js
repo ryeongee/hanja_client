@@ -15,7 +15,7 @@ class SearchItemList extends React.Component {
                     wrong = {wrong}
                 />
             )
-        );
+        );        
         return (
             <div>
                 {hanjaList}

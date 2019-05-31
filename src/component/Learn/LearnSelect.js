@@ -11,6 +11,7 @@ class LearnSelect extends React.Component {
     this.onLevelBtnClick = this.onLevelBtnClick.bind(this);    
     this.onTypeBtnClick = this.onTypeBtnClick.bind(this);    
     this.onStartBtnClick = this.onStartBtnClick.bind(this);    
+    this.onStopBtnClick = this.onStopBtnClick.bind(this);
   }
 
   onLevelBtnClick(selected) {

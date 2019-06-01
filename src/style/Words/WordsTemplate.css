@@ -6,20 +6,25 @@
   margin-top: 1rem;
 }
 
-.title {
+.words-template .title {
   padding: 1rem;
   font-size: 2.5rem;
   text-align: center;
   font-weight: 100;
-  background: #22b8cf;;
+  background: goldenrod;
   color: white;
 }
 
-.select-wrapper, .form-wrapper {
+.words-template .select-wrapper {
   padding: 1rem;
-  border-bottom: 1px solid #22b8cf;
+  border-bottom: 1px solid goldenrod;
 }
 
-.words-wrapper {
+.words-template .form-wrapper {
+  padding: 1rem;
+  border-bottom: 1px solid goldenrod;
+}
+
+.words-template .words-wrapper {
   min-height: 5rem;
 }

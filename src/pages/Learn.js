@@ -54,22 +54,30 @@ class Learn extends React.Component {
         await this.getQuestion();        
     }
     
-    handleStop = async() => {        
+    handleStop = async() => {   
         this.setState({
-            level: '',    
+            hanjas: this.state.hanjas.map(h => {
+                let r = this.state.result.find(res => res.id === h.id);
+                h.correct = r.correct;
+                h.wrong = r.wrong;
+                return h;
+            }),
             question: {},
-            index: 0,           
-            hanjas: [],
+            index: 0,  
             learning: false,
-            showDesc: false,
-            
-        });        
+            showDesc: false
+        });    
+
         let data = JSON.stringify(this.state.result);        
         await axios.get(`http://${info.ip()}:${info.port()}/set?result=${data}`);
         let retry = window.confirm("다시 하시겠습니까?");
         if(retry) {
-            this.handleStart(this.state.type);
-        }   
+            this.setState({
+                result: [],
+                learning: true
+            });
+            this.getQuestion();
+        } 
     }
 
     getQuestion = () => {             

@@ -10,15 +10,25 @@ class WordsForm extends React.Component {
       answer: e.target.value
     })
   }
+
   handleKeyDown = (e) => {
     if(e.keyCode === 13) {
-      e.preventDefault();
-      this.props.onCheckAnswer(this.state);      
-
-      this.setState({
-        answer: ''
-      })
+      this.checkAnswer(e);
     }
+  }
+
+  handleBlur = (e) => {
+    if(this.state.answer !== '') {
+      this.checkAnswer(e);
+    }
+  }
+
+  checkAnswer = (e) => {        
+    this.props.onCheckAnswer(this.state);      
+
+    this.setState({
+      answer: ''
+    });  
   }
 
   render() {
@@ -30,6 +40,7 @@ class WordsForm extends React.Component {
           value={this.state.answer} 
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown} 
+          onBlur={this.handleBlur}
         />
       </div>
     );

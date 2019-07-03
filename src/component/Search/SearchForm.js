@@ -11,8 +11,7 @@ class SearchForm extends React.Component {
     })
   }
   handleKeyDown = (e) => {
-    if(e.keyCode === 13) {
-      e.preventDefault();
+    if(e.keyCode === 13) {      
       this.props.onCreate(this.state);
       
       this.setState({

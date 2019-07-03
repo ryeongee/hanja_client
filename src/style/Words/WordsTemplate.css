@@ -1,27 +1,26 @@
 .words-template {
-  background: white;
-  width: 512px;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); /* 그림자 */ 
-  margin: 0 auto; /* 페이지 중앙 정렬 */
+  background: white;  
+  width: 90%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); 
+  margin: 0 auto; 
   margin-top: 1rem;
 }
 
 .words-template .title {
-  padding: 1rem;
-  font-size: 2.5rem;
-  text-align: center;
-  font-weight: 100;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  text-align: center;  
   background: goldenrod;
   color: white;
 }
 
 .words-template .select-wrapper {
-  padding: 1rem;
+  padding: 0.5rem;
   border-bottom: 1px solid goldenrod;
 }
 
 .words-template .form-wrapper {
-  padding: 1rem;
+  padding: 0.5rem;
   border-bottom: 1px solid goldenrod;
 }
 

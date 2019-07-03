@@ -65,14 +65,11 @@ class LearnSelect extends React.Component {
             <Button onClick={() => this.onTypeBtnClick(1)} active={this.state.type === 1} disabled={learning}>가나다 순으로</Button>                      
             <Button onClick={() => this.onTypeBtnClick(2)} active={this.state.type === 2} disabled={learning}>낮은 정답률순</Button>                      
             <Button onClick={() => this.onTypeBtnClick(3)} active={this.state.type === 3} disabled={learning}>낮은 시도율순</Button>                      
-            <Button onClick={() => this.onTypeBtnClick(4)} active={this.state.type === 4} disabled={learning}>무작위 순으로</Button>                                  
-          </ButtonGroup>
-        </div>
-        <div className="right"> 
-          <ButtonGroup className="selectBtn" vertical>
+            <Button onClick={() => this.onTypeBtnClick(4)} active={this.state.type === 4} disabled={learning}>무작위 순으로</Button> 
+            <br/>                                 
             <Button className="startBtn" onClick={() => this.onStartBtnClick()} disabled={learning}>학습 시작</Button>                
             <Button className="stopBtn" onClick={() => this.onStopBtnClick()} disabled={!learning}>학습 종료</Button>                
-          </ButtonGroup>         
+          </ButtonGroup>
         </div>
       </div>
     

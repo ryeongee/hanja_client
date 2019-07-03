@@ -57,8 +57,10 @@ class Words extends React.Component {
         this.setState({
             hanjas: this.state.hanjas.map(h => {
                 let r = this.state.result.find(res => res.id === h.id);
-                h.correct = r.correct;
-                h.wrong = r.wrong;
+                if(r !== undefined) {
+                    h.correct = r.correct;
+                    h.wrong = r.wrong;
+                }
                 return h;
             }),
             question: {},

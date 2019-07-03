@@ -16,12 +16,12 @@
   width: 35%;  
 }
 
-.selectBtn.btn-group-vertical .btn.startBtn{
+.btn-group-vertical .btn.startBtn{
   background-color: dodgerblue !important;
   border-color: dodgerblue !important;
 }
 
-.selectBtn.btn-group-vertical .btn.stopBtn{
+.btn-group-vertical .btn.stopBtn{
   background-color: brown !important;
   border-color: brown !important;
 }

@@ -12,24 +12,33 @@ class LearnForm extends React.Component {
   }
   handleKeyDown = (e) => {
     if(e.keyCode === 13) {
-      e.preventDefault();
-      this.props.onCheckAnswer(this.state);      
-
-      this.setState({
-        answer: ''
-      })
+      this.checkAnswer(e);      
     }
+  }
+  handleBlur = (e) => {
+    if(this.state.answer !== '') {
+      this.checkAnswer(e);
+    }
+  }
+  checkAnswer = (e) => {        
+    this.props.onCheckAnswer(this.state);      
+
+    this.setState({
+      answer: ''
+    }); 
+    
   }
 
   render() {
     return (
       <div className="learn_form">
         <label>{this.props.question}</label>
-        <input 
+        <input           
           placeholder="답" 
           value={this.state.answer} 
           onChange={this.handleChange}
           onKeyDown={this.handleKeyDown} 
+          onBlur={this.handleBlur}          
         />
       </div>
     );

@@ -1,31 +1,50 @@
 import React from 'react';
-import { ButtonGroup, Button } from 'reactstrap';
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Button  } from 'reactstrap';
 import '../../style/Words/WordsSelect.css';
 
 class WordsSelect extends React.Component {
   constructor (props) {
     super(props);
 
-    this.state = { type: -1, learning: false };
+    this.state = { type: -1, 
+      typeLabel: "타입선택", typeDdOpen: false,
+      learnBtnLabel: "학습시작", learnBtnColor: "primary",
+      types: [
+        {type: 1, typeLabel: "가나다 순으로"},
+        {type: 2, typeLabel: "낮은 정답률순"},
+        {type: 3, typeLabel: "낮은 시도율순"},
+        {type: 4, typeLabel: "무작위 순으로"},       
+      ]
+    };
     
     this.onTypeBtnClick = this.onTypeBtnClick.bind(this);    
-    this.onStartBtnClick = this.onStartBtnClick.bind(this);    
-    this.onStopBtnClick = this.onStopBtnClick.bind(this);
+    this.onLearnBtnClick = this.onLearnBtnClick.bind(this);
+
+    this.typeToggle = this.typeToggle.bind(this);
   }
   
-  onTypeBtnClick(selected) {
-    this.setState({ type: selected });
+  onTypeBtnClick(type, typeLabel) {
+    this.setState({ type: type, typeLabel: typeLabel});
   }
-  onStartBtnClick() {    
-    if(this.state.type !== -1) {
-      this.setState({learning: true});
-      this.props.onStart(this.state);      
-    } else {  
-      alert("항목을 선택하세요.");
-    }
-  }
-  onStopBtnClick() {        
-    this.props.onStop(this.state);          
+
+  onLearnBtnClick() {
+    if(!this.props.learning) {
+      if(this.state.type !== -1) {      
+        this.setState({learnBtnLabel: "학습종료", learnBtnColor: "danger"});
+        this.props.onStart(this.state);      
+      } else {  
+        alert("항목을 선택하세요.");
+      }
+    } else {
+      this.setState({learnBtnLabel: "학습시작", learnBtnColor: "primary"});
+      this.props.onStop(this.state);
+    }    
+  }  
+ 
+  typeToggle() {
+    this.setState(prevState => ({
+      typeDdOpen: !prevState.typeDdOpen
+    }));
   }
 
   render() { 
@@ -33,21 +52,21 @@ class WordsSelect extends React.Component {
     return (
       <div className="main">
         <div className="left">
-          <ButtonGroup vertical>
-            <Button onClick={() => this.onTypeBtnClick(1)} active={this.state.type === 1} disabled={learning}>가나다 순으로</Button>                      
-            <Button onClick={() => this.onTypeBtnClick(2)} active={this.state.type === 2} disabled={learning}>낮은 정답률순</Button>                      
-            <Button onClick={() => this.onTypeBtnClick(3)} active={this.state.type === 3} disabled={learning}>낮은 시도율순</Button>                      
-            <Button onClick={() => this.onTypeBtnClick(4)} active={this.state.type === 4} disabled={learning}>무작위 순으로</Button>                                  
-          </ButtonGroup>
+          <Dropdown isOpen={this.state.typeDdOpen} toggle={this.typeToggle}>
+            <DropdownToggle caret outline disabled={learning}>{this.state.typeLabel}</DropdownToggle>
+            <DropdownMenu>
+              {this.state.types.map((t) => {
+                return (<DropdownItem onClick={() => this.onTypeBtnClick(t.type, t.typeLabel)}>
+                        {t.typeLabel}</DropdownItem>);
+              })}            
+            </DropdownMenu>
+          </Dropdown>
         </div>
         <div className="right"> 
-          <ButtonGroup className="selectBtn" vertical>
-            <Button className="startBtn" onClick={() => this.onStartBtnClick()} disabled={learning}>학습 시작</Button>                
-            <Button className="stopBtn" onClick={() => this.onStopBtnClick()} disabled={!learning}>학습 종료</Button>                
-          </ButtonGroup>         
+          <Button className="learnBtn" color={this.state.learnBtnColor} onClick={() => this.onLearnBtnClick()}>
+              {this.state.learnBtnLabel}</Button>   
         </div>
       </div>
-    
     );
   }
 }

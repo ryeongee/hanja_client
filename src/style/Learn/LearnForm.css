@@ -6,7 +6,7 @@
 .learn_form label {
   font-family: "궁서";
   font-weight: bold;
-  width: 20%;
+  width: 20%;  
   font-size: 3rem;
   outline: none;
   border: none;  
@@ -15,10 +15,10 @@
 .learn_form input {  
   font-family: "궁서";  
   width: 80%;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+  min-height: 90px;
   font-size: 3rem;
   outline: none;
-  border: none;  
-  border-bottom: 1px solid lightcoral;
+  border: none;      
 }

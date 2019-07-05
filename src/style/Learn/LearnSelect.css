@@ -1,8 +1,6 @@
 .main {
   display: table;  
-  width: 100%;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  width: 100%;  
   text-align: center;
 }
 
@@ -14,24 +12,4 @@
 .center {
   display: table-cell;
   width: 35%;  
-}
-
-.btn-group-vertical .btn.startBtn{
-  background-color: dodgerblue !important;
-  border-color: dodgerblue !important;
-}
-
-.btn-group-vertical .btn.stopBtn{
-  background-color: brown !important;
-  border-color: brown !important;
-}
-
-.btn-group-vertical .btn {
-  background-color: lightslategray !important;
-  border-color: lightslategray !important;
-}
-
-.btn-group-vertical .btn.active {
-  background-color: dodgerblue !important;
-  border-color: dodgerblue !important;
 }

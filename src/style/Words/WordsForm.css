@@ -17,8 +17,8 @@
   width: 55%;
   padding-left: 10px;
   padding-right: 10px;
+  min-height: 90px;
   font-size: 3rem;
   outline: none;
-  border: none;  
-  border-bottom: 1px solid goldenrod;
+  border: none;    
 }

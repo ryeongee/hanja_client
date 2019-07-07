@@ -1,0 +1,6 @@
+td:hover { background-color: lightgray; } 
+
+td {
+	font-size: 2em;
+	text-align: center;
+}

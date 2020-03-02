@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import WordsTemplate from '../component/Words/WordsTemplate';
-import WordsSelect from '../component/Words/WordsSelect';
-import WordsForm from '../component/Words/WordsForm';
-import WordsItemList from '../component/Words/WordsItemList';
+import WordsTemplate from '../components/Words/WordsTemplate';
+import WordsSelect from '../components/Words/WordsSelect';
+import WordsForm from '../components/Words/WordsForm';
+import WordsItemList from '../components/Words/WordsItemList';
 import info from '../info';
 
 class Words extends React.Component {
@@ -12,8 +12,7 @@ class Words extends React.Component {
         index: 0,   
         limit: 10, 
         hanjas: [],
-        result: [],
-        imgs: [],
+        result: [],        
         learning: false,
         showDesc: false,
         firstTry: true
@@ -99,10 +98,7 @@ class Words extends React.Component {
     }
 
     checkAnswer = async(data) => {
-        let {sounds, id, correct, wrong} = this.state.question;        
-        this.setState({
-            imgs: []
-        });
+        let {sounds, id, correct, wrong} = this.state.question;            
         if(data.answer === sounds) {            
             this.setState({
                 result: this.state.result.map(r => {
@@ -121,11 +117,6 @@ class Words extends React.Component {
             let {shapes} = this.state.question;
             for(let i=0; i<shapes.length; i++) {                
                 let get = (await axios.get(`http://${info.ip()}:${info.port()}/get?shape=${shapes[i]}`));                
-                if(get.data.length > 0) {
-                    this.setState({
-                        imgs: this.state.imgs.concat(get.data[0])
-                    });
-                }
             }            
 
             this.setState({
@@ -136,14 +127,14 @@ class Words extends React.Component {
     }
 
     render() {
-        let {question, showDesc, imgs, learning} = this.state;
+        let {question, showDesc, learning} = this.state;
         let rate = (question.correct/(question.correct + question.wrong)) * 100;
         if(isNaN(rate)) rate = 0.0;
         rate = '[' + rate.toFixed(0) + '%]';
         return (
             <WordsTemplate select={<WordsSelect learning={learning} onStart={this.handleStart} onStop={this.handleStop}/>} 
                             form={<WordsForm question={question.shapes} onCheckAnswer={this.checkAnswer}/>}>
-                <WordsItemList showDesc={showDesc} imgs={imgs} desc={question.sounds} rate={rate}/>
+                <WordsItemList showDesc={showDesc} desc={question.sounds} rate={rate}/>
             </WordsTemplate>
         );
     }

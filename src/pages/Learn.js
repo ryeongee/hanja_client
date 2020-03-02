@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import LearnTemplate from '../component/Learn/LearnTemplate';
-import LearnSelect from '../component/Learn/LearnSelect';
-import LearnForm from '../component/Learn/LearnForm';
-import LearnItem from '../component/Learn/LearnItem';
+import LearnTemplate from '../components/Learn/LearnTemplate';
+import LearnSelect from '../components/Learn/LearnSelect';
+import LearnForm from '../components/Learn/LearnForm';
+import LearnItem from '../components/Learn/LearnItem';
 import info from '../info';
 
 class Learn extends React.Component {
@@ -132,8 +132,7 @@ class Learn extends React.Component {
       <LearnTemplate 
         select={<LearnSelect learning={learning} onStart={this.handleStart} onStop={this.handleStop} />}
         form={<LearnForm question={question.shape} onCheckAnswer={this.checkAnswer} />}>
-        <LearnItem showDesc={showDesc}
-          img={question.img}
+        <LearnItem showDesc={showDesc}          
           desc={question.mean + ' ' + question.sound}
           rate={rate} />
       </LearnTemplate>

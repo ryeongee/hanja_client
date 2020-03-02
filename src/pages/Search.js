@@ -1,8 +1,8 @@
 import React from 'react';
 import axios from 'axios';
-import SearchTemplate from '../component/Search/SearchTemplate';
-import SearchItemList from '../component/Search/SearchItemList';
-import SearchForm from '../component/Search/SearchForm';
+import SearchTemplate from 'components/Search/SearchTemplate';
+import SearchItemList from 'components/Search/SearchItemList';
+import SearchForm from 'components/Search/SearchForm';
 import info from '../info';
 
 class Search extends React.Component {

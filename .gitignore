@@ -2,6 +2,7 @@ test/
 custom/
 node_modules/
 package-lock.json
+yarn.lock
 .git/
 .DS_Store
 .idea

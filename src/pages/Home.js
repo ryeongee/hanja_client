@@ -4,7 +4,10 @@ import '../style/Home/Home.css';
 const Home = () => {
     return (
         <div className='home'>
-            <br/>
+            <br/>            
+            <br/>            
+            <br/>            
+            <br/>            
             <h2>안녕하세요.</h2>
             <h2>한자 학습 시스템 입니다.</h2>
             <br/>
@@ -13,7 +16,6 @@ const Home = () => {
             <h2>메뉴 소개</h2>
             <li>한자 검색 : 한자를 검색할 수 있습니다.</li>
             <li>한자 학습 : 한자를 학습할 수 있습니다.</li>
-            <li>한자 게임(빙고) : 한자 게임을 할 수 있습니다.</li>
             <li>단어 학습 : 한자 단어를 학습할 수 있습니다.</li>
         </div>
     );
